@@ -4,7 +4,6 @@ from .sa import Self_Attention
 from .ca import Cross_Attention
 from .rn import Relation_Network, cos_similar
 
-from options import Option
 
 class Model(nn.Module):
     def __init__(self, args):
@@ -73,9 +72,3 @@ class Model(nn.Module):
                 # print('rn_scores:', cls_fea.size())
                 return cls_fea, rn_scores
 
-if __name__ == '__main__':
-    args = Option().parse()
-    sk = torch.rand((4, 224, 224))
-    im = torch.rand((4, 224, 224))
-    model = Model(args)
-    cls_fea, rn_scores = model(sk, im)
